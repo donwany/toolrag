@@ -150,7 +150,7 @@ Vector stores are created via `vector_store_factory.py`. Supported providers:
 Quick example:
 
 ```python
-from toolrag.agent_with_vector_tools import run_agent
+from toolrag.agent import run_agent
 
 # Default (ChromaDB)
 result = run_agent("Will it rain in Accra this weekend?")
