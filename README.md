@@ -1,4 +1,4 @@
-# ToolVector: Semantic Vector-Based Tool Retrieval for Agentic Systems: A Dynamic Tool Discovery in LLM Agents
+# ToolRAG: Semantic Vector-Based Tool Retrieval for Agentic Systems: A Dynamic Tool Discovery in LLM Agents
 
   - **Corresponding authors:**  [Theophilus Siameh](https://www.linkedin.com/in/theophilus-siameh-793a8626/), [Abigail Akosua Addobea](https://www.linkedin.com/in/madam-akosua-addobea08/), [Liu Chung-Hung](https://www.linkedin.com/in/qing-yang-b3a02120b/), [Eric Kudjoe Fiah](https://www.linkedin.com/in/eric-fiah-3815b1157/) 
 
@@ -20,7 +20,7 @@ Large Language Model (LLM) agents increasingly require dynamic tool discovery an
 ---
 
 ## Architecture
-![ToolVector](./assets/tools_data_flow.drawio.png)
+![ToolRAG](./assets/tools_data_flow.drawio.png)
 
 
 <!-- ## ToolVector: Semantic Vector-Based Tool Retrieval for LLM Agents -->
