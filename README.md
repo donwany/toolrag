@@ -15,7 +15,7 @@
 </p>
 
 ## Abstract
-Large Language Model (LLM) agents increasingly require dynamic tool discovery and execution capabilities to handle diverse user requests. Traditional approaches hard-code tool mappings or rely on exhaustive function calling, limiting scalability and adaptability. We present a novel framework that decouples tool discovery from execution through semantic vector-based retrieval, storing tool descriptors not executable code in a vector database. Our approach achieves 94.3\% tool selection accuracy on the ToolBench benchmark, outperforming baseline methods by 23.7\%. Through comprehensive ablation studies across 4 embedding models and 8 LLMs (both proprietary and open-source), we demonstrate the framework's robustness and provide mathematical formulations for retrieval optimization. The system reduces tool discovery latency by 67\% compared to exhaustive search while maintaining 99.1\% execution correctness. Our contributions include: (1) a theoretically grounded separation of tool discovery and execution, (2) empirical validation across diverse model architectures and embedding models, (3) a scalable framework supporting $\mathcal{O}(\log n)$ tool retrieval complexity, and (4) open-source implementation with production deployment guidelines.
+Large Language Model (LLM) agents increasingly require dynamic tool discovery and execution capabilities to handle diverse user requests. Traditional approaches hard-code tool mappings or rely on exhaustive function calling, limiting scalability and adaptability. We present a novel framework that decouples tool discovery from execution through semantic vector-based retrieval, storing tool descriptors that are not executable code in a vector database. Our semantic vector-based tool retrieval approach achieves 94.3\% tool selection accuracy on 56 sample queries benchmark. Through systematic ablation studies and cost-effectiveness analysis in 7 embedding models, 4 vector databases, and 15 LLMs (both proprietary and open-source), we demonstrate that the optimized descriptor design improves Recall@3 by 28\% over the baseline approaches while maintaining a sub-200 ms latency. The system reduces tool discovery latency by 67\% compared to exhaustive search while maintaining 99.1\% execution correctness. Our contributions include: (1) a theoretically grounded separation of tool discovery and execution, (2) empirical validation across diverse model architectures and embedding models, (3) a scalable framework supporting $\mathcal{O}(\log n)$ tool retrieval complexity, and (4) open-source implementation with production deployment guidelines.
 
 ---
 
@@ -229,6 +229,8 @@ This runs a **mocked** version of the flow:
 
 This requires only Python (no API keys, no MCP server).
 
+
+![ToolRAG](./assets/pipeline.png)
 ---
 
 ## 6. Running the MCP Agent (ToolRAG)
