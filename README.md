@@ -553,7 +553,7 @@ If you get stuck, the best places to check are:
 Feel free to cite us if you like ToolRAG.
 ```bibtex
 @misc{theo2026toolrag,
-      title={ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs}, 
+      title={ToolRAG: Semantic Vector-Based Tool Retrieval for Agentic Systems: A Dynamic Tool Discovery in LLM Agents}, 
       author={Theophilus Siameh, Abigail Akosua Addobea, Chun-Hung Liu, Eric Kudjoe Fiah},
       year={2026},
       eprint={},
