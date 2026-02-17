@@ -280,67 +280,67 @@ uv run python src/toolrag/cli.py \
   --max_attempts 3
 
 python  src/toolrag/cli.py \
-    --query "What is the weather in Tokyo?" \
-    --llm_provider ollama \
-    --r_temperature 0.0
-    --g_temperature 0.7
-    --num_tools 3 \
-    --confidence_threshold 0.6 \
-    --max_attempts 3 \
-    --num_tools 3 \ 
-    --selected_tool None \
-    --failed_tools [] \
-    --tool_result None \
-    --retrieved_tools [] \
-    --tool_execution_success False \
-    --tool_confidence 0.0 \ 
-    --refined_query "" \
-    --requires_user_feedback False \
-    --user_feedback None \ 
-    --tried_tools_count 0 \
-    --messages [] \
-    --attempt_count 1 \
-    --validation_result "failed" \
-    --vector_store_provider qdrant \
-    --embedding_provider ollama \
-    --embedding_model nomic-embed-text
+  --query "What is the weather in Tokyo?" \
+  --llm_provider ollama \
+  --r_temperature 0.0
+  --g_temperature 0.7
+  --num_tools 3 \
+  --confidence_threshold 0.6 \
+  --max_attempts 3 \
+  --num_tools 3 \ 
+  --selected_tool None \
+  --failed_tools [] \
+  --tool_result None \
+  --retrieved_tools [] \
+  --tool_execution_success False \
+  --tool_confidence 0.0 \ 
+  --refined_query "" \
+  --requires_user_feedback False \
+  --user_feedback None \ 
+  --tried_tools_count 0 \
+  --messages [] \
+  --attempt_count 1 \
+  --validation_result "failed" \
+  --vector_store_provider qdrant \
+  --embedding_provider ollama \
+  --embedding_model nomic-embed-text
 
 
 # using Module
 python -m toolrag.cli \             
-    --query "what is my ip address and check the weather in Dalllas, TX and search topics on LLM" \
-    --vector_store_provider qdrant \
-    --num_tools 5 \
-    --embedding_model "qwen3-embedding:8b"
+  --query "what is my ip address and check the weather in Dalllas, TX and search topics on LLM" \
+  --vector_store_provider qdrant \
+  --num_tools 5 \
+  --embedding_model "qwen3-embedding:8b"
 
 uv run -m toolrag.cli \
-    --query "what is my ip address and check the weather in Dalllas, TX and search topics on LLM" \
-    --vector_store_provider qdrant \
-    --num_tools 5 \
-    --embedding_model "qwen3-embedding:8b"
+  --query "what is my ip address and check the weather in Dalllas, TX and search topics on LLM" \
+  --vector_store_provider qdrant \
+  --num_tools 5 \
+  --embedding_model "qwen3-embedding:8b"
 
 
-# CLI 
+# Install CLI
 uv pip install -e .
 
 # run CLI
 toolrag \
-    --query "Im searching for papers on AI Agents" \
-    --vector_store_provider milvus \
-    --num_tools 3 \
-    --embedding_model "qwen3-embedding:8b"
+  --query "Im searching for papers on AI Agents" \
+  --vector_store_provider milvus \
+  --num_tools 3 \
+  --embedding_model "qwen3-embedding:8b"
 
 toolrag \
-    --query "what is my ip address, check the weather in Dalllas, TX and search for papers on the topic LLM" \
-    --vector_store_provider qdrant \
-    --num_tools 5 \
-    --embedding_model "qwen3-embedding:8b"
+  --query "what is my ip address, check the weather in Dalllas, TX and search for papers on the topic LLM" \
+  --vector_store_provider qdrant \
+  --num_tools 5 \
+  --embedding_model "qwen3-embedding:8b"
 
 toolrag \
-    --query "extract paper information with ID: 2406.01698v3" \
-    --vector_store_provider qdrant \
-    --num_tools 5 \
-    --embedding_model "qwen3-embedding:8b"
+  --query "extract paper information with ID: 2406.01698v3" \
+  --vector_store_provider qdrant \
+  --num_tools 5 \
+  --embedding_model "qwen3-embedding:8b"
 ```
 
 ---
@@ -462,6 +462,12 @@ Adding a new tool follows three main steps:
 1. **Add a descriptor** (to the descriptors list used by `ToolVectorDB`):
 
 ```python
+# Tool Descriptors
+TOOL_DESCRIPTORS = [
+  ...
+]
+
+
 my_tool_descriptor = {
     "tool_id": "email_send",
     "description": "Send an email to a recipient",
@@ -483,12 +489,12 @@ TOOL_DESCRIPTORS.append(my_tool_descriptor)
 
 ```python
 from fastmcp import FastMCP
-mcp = FastMCP(\"UtilityTools\")
+mcp = FastMCP("UtilityTools")
 
 @mcp.tool()
 def email_send(to: str, subject: str, body: str) -> str:
     # Implement your email sending logic here
-    return f\"Sent email to {to} with subject '{subject}'\"
+    return f"Sent email to {to} with subject '{subject}'"
 ```
 
 3. **Restart the MCP server** and (optionally) refresh the vector DB so the new descriptor is embedded.
