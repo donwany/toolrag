@@ -186,7 +186,7 @@ Ensure the `TOOLS_MCP_SERVER_URL` and `SEARCH_MCP_SERVER_URL` in `.env` match th
 ## 4. Project Structure (high level)
 
 - `src/toolrag/`
-  - `agent.py` – main LangGraph agent that:
+  - `cli.py` – main LangGraph agent that:
     - retrieves tools from a vector DB
     - reasons about which tool to call
     - calls the MCP tool
@@ -233,7 +233,7 @@ This requires only Python (no API keys, no MCP server).
 
 ## 6. Running the MCP Agent (ToolRAG)
 
-The main MCP‑enabled agent lives in `src/toolrag/agent.py`. It:
+The main MCP‑enabled agent lives in `src/toolrag/cli.py`. It:
 
 - Reads CLI args (query, LLM provider, vector store provider, etc.)
 - Builds a `ToolVectorDB` from tool descriptors
@@ -248,7 +248,7 @@ The main MCP‑enabled agent lives in `src/toolrag/agent.py`. It:
 After MCP servers are running:
 
 ```bash
-uv run python src/toolrag/agent.py \
+uv run python src/toolrag/cli.py \
   --query \"What is the weather in Tokyo?\" \
   --llm_provider ollama
 ```
@@ -257,7 +257,7 @@ All other flags have sensible defaults (vector store, temperatures, thresholds, 
 
 ### 6.2. Advanced CLI (full control)
 
-`agent.py` accepts many command‑line arguments (see `src/toolrag/utils.py` / `create_parser`):
+`cli.py` accepts many command‑line arguments (see `src/toolrag/utils.py` / `create_parser`):
 
 - `--query` – user question (required)
 - `--llm_provider` – `openai | anthropic | gemini | ollama` (default: `ollama`)
@@ -271,7 +271,7 @@ All other flags have sensible defaults (vector store, temperatures, thresholds, 
 Example:
 
 ```bash
-uv run python src/toolrag/agent.py \
+uv run python src/toolrag/cli.py \
   --query \"What's the current price of Apple stock?\" \
   --llm_provider openai \
   --vector_store_provider chroma \
@@ -279,7 +279,7 @@ uv run python src/toolrag/agent.py \
   --confidence_threshold 0.6 \
   --max_attempts 3
 
-python  src/toolrag/agent.py \
+python  src/toolrag/cli.py \
     --query "What is the weather in Tokyo?" \
     --llm_provider ollama \
     --r_temperature 0.0
@@ -305,6 +305,42 @@ python  src/toolrag/agent.py \
     --embedding_provider ollama \
     --embedding_model nomic-embed-text
 
+
+# using Module
+python -m toolrag.cli \             
+    --query "what is my ip address and check the weather in Dalllas, TX and search topics on LLM" \
+    --vector_store_provider qdrant \
+    --num_tools 5 \
+    --embedding_model "qwen3-embedding:8b"
+
+uv run -m toolrag.cli \
+    --query "what is my ip address and check the weather in Dalllas, TX and search topics on LLM" \
+    --vector_store_provider qdrant \
+    --num_tools 5 \
+    --embedding_model "qwen3-embedding:8b"
+
+
+# CLI 
+uv pip install -e .
+
+# run CLI
+toolrag \
+    --query "Im searching for papers on AI Agents" \
+    --vector_store_provider milvus \
+    --num_tools 3 \
+    --embedding_model "qwen3-embedding:8b"
+
+toolrag \
+    --query "what is my ip address, check the weather in Dalllas, TX and search for papers on the topic LLM" \
+    --vector_store_provider qdrant \
+    --num_tools 5 \
+    --embedding_model "qwen3-embedding:8b"
+
+toolrag \
+    --query "extract paper information with ID: 2406.01698v3" \
+    --vector_store_provider qdrant \
+    --num_tools 5 \
+    --embedding_model "qwen3-embedding:8b"
 ```
 
 ---
