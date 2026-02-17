@@ -46,8 +46,8 @@ This project implements an end-to-end **LangGraph-based LLM agent** that:
 ### 1.2. Clone the repository
 
 ```bash
-git clone https://github.com/donwany/toolvector.git
-cd rag-tool-paper   # or the cloned folder name
+git clone https://github.com/donwany/toolrag.git
+cd toolrag   # or the cloned folder name
 ```
 
 ### 1.3. Create environment and install dependencies (uv)
@@ -507,8 +507,8 @@ For contributors, see **`CONTRIBUTING.md`**.
 ### 10.1. Dev setup (summary)
 
 ```bash
-git clone https://github.com/donwany/toolvector.git
-cd rag-tool-paper
+git clone https://github.com/donwany/toolrag.git
+cd toolrag
 
 python -m venv .venv
 source .venv/bin/activate
@@ -539,7 +539,7 @@ Use feature branches and pull requests for changes, and run `make pre-commit` be
   - Ensure Milvus / Qdrant servers are running if you configured them.
 
 - **Import or path errors**  
-  - Run from project root: `uv run python src/toolrag/03_agent_main_with_mcp.py ...`
+  - Run from project root: `uv run python src/toolrag/agent.py ...`
   - Make sure `.venv` is activated so local dependencies are used.
 
 If you get stuck, the best places to check are:
@@ -548,4 +548,17 @@ If you get stuck, the best places to check are:
 - `quick-start/QUICKSTART.md` (step‑by‑step run)
 - `quick-start/ARCHITECTURE.md` (architecture diagrams)
 - `evaluation/README_EVAL.md` (metrics & evaluation)
+
+## Citation
+Feel free to cite us if you like ToolRAG.
+```bibtex
+@misc{theo2026toolrag,
+      title={ToolLLM: Facilitating Large Language Models to Master 16000+ Real-world APIs}, 
+      author={Theophilus Siameh, Abigail Akosua Addobea, Chun-Hung Liu, Eric Kudjoe Fiah},
+      year={2026},
+      eprint={},
+      archivePrefix={},
+      primaryClass={cs.AI}
+}
+```
 
